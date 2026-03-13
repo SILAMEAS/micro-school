@@ -4,7 +4,7 @@ import com.LACY.school.dto.FullSchoolResponse;
 import com.LACY.school.feign.StudentFeign;
 import com.LACY.school.model.School;
 import com.LACY.school.repository.SchoolRepository;
-import jakarta.ws.rs.BadRequestException;
+import com.lacy.exception.NotFoundException;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +34,7 @@ public class SchoolService {
     var school =
         this.schoolRepository
             .findById(schoolId)
-            .orElseThrow(() -> new BadRequestException("School not found"));
+            .orElseThrow(() -> new NotFoundException("School not found"));
 
     var students =
         studentFeign.findAllStudentBySchool(
