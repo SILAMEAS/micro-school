@@ -1,5 +1,5 @@
 spring:
   application:
-    name: schools
+    name: schools-service
   config:
     import: optional:configserver:${URI_CONFIG_SERVER}
